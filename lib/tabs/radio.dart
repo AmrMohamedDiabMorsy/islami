@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:islami/my_theme_data.dart';
 
 class RadioTab extends StatelessWidget {
+  const RadioTab({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 120,
           ),
           Image.asset("assets/images/radio_image.png"),
@@ -19,9 +21,9 @@ class RadioTab extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 65),
-            child: Container(
+          const Padding(
+            padding: EdgeInsets.only(top: 65),
+            child: SizedBox(
               width: 218.5,
               height: 36,
               child: Row(

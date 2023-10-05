@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:islami/my_theme_data.dart';
+import 'package:islami/providers/my_provider.dart';
 import 'package:islami/suradetails.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 import '../sura_model.dart';
 
 class QuranTab extends StatelessWidget {
@@ -244,16 +246,17 @@ class QuranTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<MyProvider>(context);
     return Center(
       child: Column(
         children: [
           Image.asset("assets/images/quran_image.png"),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Table(
             border: TableBorder.symmetric(
-              inside: BorderSide(
+              inside: const BorderSide(
                 color: MyThemeData.primary,
                 width: 2,
               ),
@@ -261,7 +264,7 @@ class QuranTab extends StatelessWidget {
             defaultVerticalAlignment: TableCellVerticalAlignment.middle,
             children: [
               TableRow(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   border: Border.symmetric(
                     horizontal: BorderSide(
                       color: MyThemeData.primary,
@@ -274,7 +277,7 @@ class QuranTab extends StatelessWidget {
                     verticalAlignment: TableCellVerticalAlignment.middle,
                     child: Center(
                       child: Text(
-                        "عدد الآيات",
+                        AppLocalizations.of(context)!.numberverses,
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ),
@@ -283,7 +286,7 @@ class QuranTab extends StatelessWidget {
                     verticalAlignment: TableCellVerticalAlignment.middle,
                     child: Center(
                       child: Text(
-                        "اسم السورة",
+                        AppLocalizations.of(context)!.suraName,
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ),
@@ -297,7 +300,7 @@ class QuranTab extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Table(
                     border: TableBorder.symmetric(
-                      inside: BorderSide(
+                      inside: const BorderSide(
                         color: MyThemeData.primary,
                         width: 2,
                       ),
@@ -305,7 +308,7 @@ class QuranTab extends StatelessWidget {
                     defaultVerticalAlignment: TableCellVerticalAlignment.middle,
                     children: [
                       TableRow(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           border: Border.symmetric(
                               // horizontal: BorderSide(
                               //   color: MyThemeData.primary,
@@ -343,7 +346,11 @@ class QuranTab extends StatelessWidget {
                                       .textTheme
                                       .bodyMedium!
                                       .copyWith(
-                                        color: MyThemeData.blackcolor,
+                                        color: provider.theme == ThemeMode.light
+                                            ? MyThemeData.blackcolor
+                                            : Theme.of(context)
+                                                .colorScheme
+                                                .onPrimary,
                                       ),
                                 ),
                               ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class SebhaTab extends StatefulWidget {
+  const SebhaTab({super.key});
+
   @override
   State<SebhaTab> createState() => _SebhaTabState();
 }
@@ -41,7 +43,7 @@ class _SebhaTabState extends State<SebhaTab> {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Center(
@@ -49,13 +51,13 @@ class _SebhaTabState extends State<SebhaTab> {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                      color: Color(0xffB7935F),
+                      color: const Color(0xffB7935F),
                       borderRadius: BorderRadius.circular(20)),
                   width: 69,
                   height: 81,
                   child: Center(
                     child: Text(
-                      '${counter}',
+                      '$counter',
                     ),
                   ),
                 ),
@@ -69,14 +71,15 @@ class _SebhaTabState extends State<SebhaTab> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                        color: Color(0xffB7935F),
+                        color: const Color(0xffB7935F),
                         borderRadius: BorderRadius.circular(30)),
                     width: 137,
                     height: 51,
                     child: Center(
                       child: Text(
                         prayStrings[index],
-                        style: Theme.of(context).textTheme.bodySmall,
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            color: Theme.of(context).colorScheme.onPrimary),
                       ),
                     ),
                   ),
